@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Display Album</string>
+
+    <string name="user_info">User Info</string>
+    <string name="album_details">Album Details</string>
+    <string name="image_display">Image Display</string>
+
+
 </resources>
