@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/user_info_fragment"
-        android:name="com.trackthebird.displayalbum.UserInfoFragment"
+        android:name="com.trackthebird.displayalbum.ui.UserInfoFragment"
         android:label="@string/user_info"
         tools:layout="@layout/user_info_fragment" >
         <action
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/album_details_fragment"
-        android:name="com.trackthebird.displayalbum.AlbumDetailsFragment"
+        android:name="com.trackthebird.displayalbum.ui.AlbumDetailsFragment"
         android:label="@string/album_details"
         tools:layout="@layout/album_details_fragment" >
         <action
@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/image_display_fragment"
-        android:name="com.trackthebird.displayalbum.ImageDisplayFragment"
+        android:name="com.trackthebird.displayalbum.ui.ImageDisplayFragment"
         android:label="@string/image_display"
         tools:layout="@layout/image_display_fragment" />
 
