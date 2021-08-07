@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/id_imageview_album_image"
+            style="@style/ImageViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="480dp"
+            android:layout_margin="0dp"
+            android:contentDescription="@string/album_image_text"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ic_textview_photo_id" />
+
+        <TextView
+            android:id="@+id/ic_textview_photo_id"
+            style="@style/TextViewStyle1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lines="1"
+            android:minHeight="36dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="@string/photos_id_text"
+            android:textColor="@color/black"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ic_textview_album_id" />
+
+
+        <TextView
+            android:id="@+id/ic_textview_album_id"
+            style="@style/TextViewStyle1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lines="1"
+            android:minHeight="36dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="@string/album_id_text"
+            android:textColor="@color/black"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ic_textview_album_text"
+            style="@style/TextViewStyle2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:inputType="textMultiLine"
+            android:minHeight="48dp"
+            android:text="@string/album_image_text"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_imageview_album_image" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+

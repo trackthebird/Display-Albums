@@ -7,5 +7,42 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <!--CardView Style-->
+    <style name="CardViewStyle">
+        <item name="android:paddingBottom">12dp</item>
+        <item name="cardCornerRadius">4dp</item>
+        <item name="cardBackgroundColor">@color/colorPrimaryDark</item>
+    </style>
+    <!--TextView Title Style-->
+    <style name="TextViewStyle1">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:background">@color/clearColor</item>
+        <item name="android:fontFamily">@font/sf_regular</item>
+    </style>
+
+    <!--TextView Title Style-->
+    <style name="TextViewStyle2" parent="TextViewStyle1">
+        <item name="android:gravity">start</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:textSize">14dp</item>
+
+    </style>
+
+    <!--TextView Title Style-->
+    <style name="ImageViewStyle">
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:backgroundTint">@color/colorPrimaryDark</item>
+    </style>
 
 </resources>

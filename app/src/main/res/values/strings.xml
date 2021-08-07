@@ -5,5 +5,18 @@
     <string name="album_details">Album Details</string>
     <string name="image_display">Image Display</string>
 
+    <!--User Info Page Strings-->
+    <string name="title_user_info">User Info</string>
+    <string name="title_album_info">Album ID: 1</string>
+
+    <string name="id">ID: 1</string>
+    <string name="name">Name:</string>
+    <string name="email">Email:</string>
+    <string name="phone">Phone:</string>
+
+    <string name="album_image_text">Image text</string>
+
+    <string name="album_id_text">Album ID : 1</string>
+    <string name="photos_id_text">Photo ID : 1</string>
 
 </resources>

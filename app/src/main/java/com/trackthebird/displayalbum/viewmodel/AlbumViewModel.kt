@@ -2,6 +2,6 @@ package com.trackthebird.displayalbum.viewmodel
 
 import androidx.lifecycle.ViewModel
 
-class SharedViewModel : ViewModel() {
+class AlbumViewModel : ViewModel() {
 
 }

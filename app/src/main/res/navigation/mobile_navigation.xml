@@ -8,9 +8,9 @@
 
     <fragment
         android:id="@+id/user_info_fragment"
-        android:name="com.trackthebird.displayalbum.ui.UserInfoFragment"
+        android:name="com.trackthebird.displayalbum.ui.UserFragment"
         android:label="@string/user_info"
-        tools:layout="@layout/user_info_fragment" >
+        tools:layout="@layout/user_fragment" >
         <action
             android:id="@+id/next_action"
             app:destination="@+id/album_details_fragment">
@@ -19,9 +19,9 @@
 
     <fragment
         android:id="@+id/album_details_fragment"
-        android:name="com.trackthebird.displayalbum.ui.AlbumDetailsFragment"
+        android:name="com.trackthebird.displayalbum.ui.AlbumFragment"
         android:label="@string/album_details"
-        tools:layout="@layout/album_details_fragment" >
+        tools:layout="@layout/album_fragment" >
         <action
             android:id="@+id/next_action"
             app:destination="@+id/image_display_fragment">
@@ -30,8 +30,8 @@
 
     <fragment
         android:id="@+id/image_display_fragment"
-        android:name="com.trackthebird.displayalbum.ui.ImageDisplayFragment"
+        android:name="com.trackthebird.displayalbum.ui.AlbumPhotoDisplayFragment"
         android:label="@string/image_display"
-        tools:layout="@layout/image_display_fragment" />
+        tools:layout="@layout/album_photo_display_fragment" />
 
 </navigation>
