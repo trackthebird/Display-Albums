@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../../layout/custom_preview.xml" value="0.14375" />
+        <entry key="app/src/main/res/drawable/progressbar_gradient.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/font/customfonts.xml" value="0.28802083333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1381340579710145" />
         <entry key="app/src/main/res/layout/album_details_fragment.xml" value="0.33" />

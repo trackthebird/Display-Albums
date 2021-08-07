@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -55,6 +56,7 @@ dependencies {
     def nav_version = "2.3.5"
     def lifecycle_version = "2.3.1"
     def retrofit_version = "2.9.0"
+    def picasso_version = "2.71828"
 
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -86,4 +88,7 @@ dependencies {
     // Retrofit for Network service - 3rd Party service
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    // For Image Downloading
+    implementation "com.squareup.picasso:picasso:$picasso_version"
 }

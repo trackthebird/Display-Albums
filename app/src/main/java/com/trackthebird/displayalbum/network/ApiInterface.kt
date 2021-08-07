@@ -7,6 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiInterface {
 
@@ -14,8 +15,11 @@ interface ApiInterface {
     fun getAllUsersList() : Call<List<User>>
     // For  https://jsonplaceholder.typicode.com/users
 
-    @GET("photos/albumId={albumId}")
-    fun getAlbumList(@Path("albumId") albumId: Int) : Call<List<Album>>
+    @GET("photos")
+    fun getAlbumList(@Query("albumId") albumId: Int) : Call<List<Album>>
+
+//    @GET("photos?albumId={albumId}")
+//    fun getAlbumList(@Query("albumId") albumId: Int) : Call<List<Album>>
     // For https://jsonplaceholder.typicode.com/photos?albumId=3
 
     companion object {

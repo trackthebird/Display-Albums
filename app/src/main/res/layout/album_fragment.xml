@@ -18,7 +18,7 @@
         tools:context="com.trackthebird.displayalbum.ui.AlbumFragment">
 
         <TextView
-            android:id="@+id/ic_textview_album_info"
+            android:id="@+id/id_textview_album_info"
             style="@style/TextViewStyle1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,12 +35,30 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/id_recycler_view_user_info"
+            android:id="@+id/id_recycler_view_album_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/ic_textview_album_info"
+            android:clipToPadding="false"
+            android:paddingBottom="48dp"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintTop_toBottomOf="@+id/id_textview_album_info"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ProgressBar
+            android:id="@+id/id_progressbar"
+            style="?android:spinnerStyle"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@color/clearColor"
+            android:indeterminate="true"
+            android:visibility="gone"
+            android:indeterminateDrawable="@drawable/progressbar_gradient"
+            android:indeterminateTintMode="src_atop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

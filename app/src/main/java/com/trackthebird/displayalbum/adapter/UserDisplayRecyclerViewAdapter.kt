@@ -1,19 +1,21 @@
 package com.trackthebird.displayalbum.adapter
 
 import android.content.Context
-import android.media.MediaRouter
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.compose.ui.node.ViewAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.trackthebird.displayalbum.R
+import com.trackthebird.displayalbum.Utils.Helper.getFormattedString
+import com.trackthebird.displayalbum.`interface`.OnItemClickListener
 import com.trackthebird.displayalbum.databinding.UserInfoItemBinding
 import com.trackthebird.displayalbum.model.User
 
-class UserDisplayRecyclerViewAdapter(val mContext: Context) :
-    RecyclerView.Adapter<UserDisplayRecyclerViewAdapter.ViewHolder>(){
+class UserDisplayRecyclerViewAdapter(
+    val mContext: Context,
+    val onItemClick: OnItemClickListener
+) :
+    RecyclerView.Adapter<UserDisplayRecyclerViewAdapter.ViewHolder>() {
 
     private val TAG by lazy {
         "UserDisplayRecyclerViewAdapter"
@@ -27,34 +29,36 @@ class UserDisplayRecyclerViewAdapter(val mContext: Context) :
         this.mUsersList = userList
     }
 
-    override fun onCreateViewHolder( parent: ViewGroup, viewType: Int ): ViewHolder {
-       val viewBinding: UserInfoItemBinding = DataBindingUtil.inflate(
-           LayoutInflater.from(parent.context),
-           R.layout.user_info_item,
-           parent,
-           false
-       )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val viewBinding: UserInfoItemBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.user_info_item,
+            parent,
+            false
+        )
         return ViewHolder(viewBinding)
     }
 
-    override fun onBindViewHolder( holder: ViewHolder,  position: Int ) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder.bind()) {
-            with(mUsersList[position]){
+            with(mUsersList[position]) {
                 with(mContext) {
                     with(resources) {
-                        var value = getString(R.string.id).getFormattedString("${id}")
                         idTextviewCellTitle.text = getString(R.string.id).getFormattedString("${id}")
                         idTextviewName.text = getString(R.string.name).getFormattedString(name)
                         idTextviewEmail.text = getString(R.string.email).getFormattedString(email)
                         idTextviewPhone.text = getString(R.string.phone).getFormattedString(phone)
                     }
                 }
+                idCardview.setOnClickListener { view ->
+                    onItemClick.onClick(id)
+                }
             }
         }
     }
 
     override fun getItemCount(): Int {
-        if(!mUsersList.isNullOrEmpty()) {
+        if (!mUsersList.isNullOrEmpty()) {
             return mUsersList.size
         }
         return 0
@@ -63,16 +67,11 @@ class UserDisplayRecyclerViewAdapter(val mContext: Context) :
     /**
      * View Holder class
      */
-    class ViewHolder(val viewBinding: UserInfoItemBinding) : RecyclerView.ViewHolder(viewBinding.root) {
-        fun bind() : UserInfoItemBinding{
+    class ViewHolder(val viewBinding: UserInfoItemBinding) :
+        RecyclerView.ViewHolder(viewBinding.root) {
+        fun bind(): UserInfoItemBinding {
             return viewBinding
         }
     }
 
-    /**
-     * Returns formatted String using Extension function
-     */
-    private fun String.getFormattedString( value:String) : String {
-        return format(value)
-    }
 }

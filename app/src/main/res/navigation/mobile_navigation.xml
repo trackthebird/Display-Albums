@@ -13,6 +13,8 @@
         tools:layout="@layout/user_fragment" >
         <action
             android:id="@+id/next_action"
+            app:argType="integer"
+            android:defaultValue="0"
             app:destination="@+id/album_details_fragment">
         </action>
     </fragment>
@@ -24,6 +26,8 @@
         tools:layout="@layout/album_fragment" >
         <action
             android:id="@+id/next_action"
+            app:argType="integer"
+            android:defaultValue="0"
             app:destination="@+id/image_display_fragment">
         </action>
     </fragment>
