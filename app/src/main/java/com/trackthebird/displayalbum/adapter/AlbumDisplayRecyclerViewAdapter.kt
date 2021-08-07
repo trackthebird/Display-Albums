@@ -7,17 +7,19 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.trackthebird.displayalbum.R
+import com.trackthebird.displayalbum.`interface`.OnItemClickListener
 import com.trackthebird.displayalbum.databinding.AlbumInfoItemBinding
 import com.trackthebird.displayalbum.model.Album
 
-class AlbumDisplayRecyclerViewAdapter(val mContext: Context) :
+class AlbumDisplayRecyclerViewAdapter(
+    val mContext: Context,
+    val onItemClick: OnItemClickListener ) :
     RecyclerView.Adapter<AlbumDisplayRecyclerViewAdapter.ViewHolder>(){
 
     private val TAG by lazy {
         "AlbumDisplayRecyclerViewAdapter"
     }
     private var mAlbumsList: List<Album> = arrayListOf()
-
     /**
      * Function updated RecyclerView List
      */
@@ -49,6 +51,9 @@ class AlbumDisplayRecyclerViewAdapter(val mContext: Context) :
                             .centerCrop()
                             .into(idImageviewAlbumThumbnail)
                     }
+                }
+                idCardview.setOnClickListener { view ->
+                    onItemClick.onClick(albumId, id, url, title )
                 }
             }
         }

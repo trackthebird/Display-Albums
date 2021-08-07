@@ -15,12 +15,12 @@
             android:id="@+id/next_action"
             app:argType="integer"
             android:defaultValue="0"
-            app:destination="@+id/album_details_fragment">
+            app:destination="@+id/album_info_fragment">
         </action>
     </fragment>
 
     <fragment
-        android:id="@+id/album_details_fragment"
+        android:id="@+id/album_info_fragment"
         android:name="com.trackthebird.displayalbum.ui.AlbumFragment"
         android:label="@string/album_details"
         tools:layout="@layout/album_fragment" >
@@ -28,12 +28,12 @@
             android:id="@+id/next_action"
             app:argType="integer"
             android:defaultValue="0"
-            app:destination="@+id/image_display_fragment">
+            app:destination="@+id/album_photo_display_fragment">
         </action>
     </fragment>
 
     <fragment
-        android:id="@+id/image_display_fragment"
+        android:id="@+id/album_photo_display_fragment"
         android:name="com.trackthebird.displayalbum.ui.AlbumPhotoDisplayFragment"
         android:label="@string/image_display"
         tools:layout="@layout/album_photo_display_fragment" />

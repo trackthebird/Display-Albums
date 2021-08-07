@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,14 +13,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.trackthebird.displayalbum.R
+import com.trackthebird.displayalbum.`interface`.OnItemClickListener
 import com.trackthebird.displayalbum.utils.Helper.isNetworkAvailable
 import com.trackthebird.displayalbum.adapter.AlbumDisplayRecyclerViewAdapter
 import com.trackthebird.displayalbum.databinding.AlbumFragmentBinding
 import com.trackthebird.displayalbum.viewmodel.AlbumViewModel
 
-class AlbumFragment : Fragment() {
+class AlbumFragment : Fragment(), OnItemClickListener {
 
     private val TAG : String = "AlbumFragment"
 
@@ -32,7 +35,7 @@ class AlbumFragment : Fragment() {
      * Function initialises variables and functions
      */
     private fun initialise() {
-        mAlbumDisplayRecyclerViewAdapter = AlbumDisplayRecyclerViewAdapter(requireActivity())
+        mAlbumDisplayRecyclerViewAdapter = AlbumDisplayRecyclerViewAdapter(requireActivity(), this)
         with(mBinding) {
             with(idRecyclerViewAlbumInfo){
                 apply {
@@ -98,5 +101,16 @@ class AlbumFragment : Fragment() {
             Toast.makeText(requireActivity(), resources.getString(R.string.no_internet_connection), Toast.LENGTH_LONG).show()
         }
     }
+    override fun onClick(id: Int) {
+    }
 
+    override fun onClick(albumId: Int, photoId: Int, imageUrl: String, imageText: String) {
+        with(Bundle()) {
+            putInt("album_id", albumId)
+            putInt("photo_id", photoId)
+            putString("image_url", imageUrl)
+            putString("image_text", imageText)
+            findNavController().navigate(R.id.album_photo_display_fragment, this)
+        }
+    }
 }

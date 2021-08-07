@@ -98,8 +98,11 @@ class UserFragment : Fragment(), OnItemClickListener {
         Log.d(TAG, "Item Clicked ${id}")
         with(Bundle()) {
             putInt("album_id", id)
-            findNavController().navigate(R.id.album_details_fragment, this)
+            findNavController().navigate(R.id.album_info_fragment, this)
         }
+    }
+
+    override fun onClick(albumId: Int, photoId: Int, imageUrl: String, imageText: String) {
     }
 }
 

@@ -13,8 +13,7 @@ import com.trackthebird.displayalbum.model.User
 
 class UserDisplayRecyclerViewAdapter(
     val mContext: Context,
-    val onItemClick: OnItemClickListener
-) :
+    val onItemClick: OnItemClickListener ) :
     RecyclerView.Adapter<UserDisplayRecyclerViewAdapter.ViewHolder>() {
 
     private val TAG by lazy {
