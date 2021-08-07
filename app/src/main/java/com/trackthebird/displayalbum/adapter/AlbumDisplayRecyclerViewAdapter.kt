@@ -52,7 +52,10 @@ class AlbumDisplayRecyclerViewAdapter(
                             .into(idImageviewAlbumThumbnail)
                     }
                 }
-                idCardview.setOnClickListener { view ->
+                idTextviewAlbumText.setOnClickListener {
+                    onItemClick.onClick(albumId, id, url, title )
+                }
+                idCardview.setOnClickListener {
                     onItemClick.onClick(albumId, id, url, title )
                 }
             }
