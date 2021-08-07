@@ -1,4 +1,4 @@
-package com.trackthebird.displayalbum.Utils
+package com.trackthebird.displayalbum.utils
 
 import android.content.Context
 import android.net.ConnectivityManager

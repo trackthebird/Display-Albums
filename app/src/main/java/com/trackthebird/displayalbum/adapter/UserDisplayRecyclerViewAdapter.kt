@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.trackthebird.displayalbum.R
-import com.trackthebird.displayalbum.Utils.Helper.getFormattedString
+import com.trackthebird.displayalbum.utils.Helper.getFormattedString
 import com.trackthebird.displayalbum.`interface`.OnItemClickListener
 import com.trackthebird.displayalbum.databinding.UserInfoItemBinding
 import com.trackthebird.displayalbum.model.User

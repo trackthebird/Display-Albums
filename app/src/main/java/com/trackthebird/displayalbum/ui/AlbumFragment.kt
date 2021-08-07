@@ -14,7 +14,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.trackthebird.displayalbum.R
-import com.trackthebird.displayalbum.Utils.Helper.isNetworkAvailable
+import com.trackthebird.displayalbum.utils.Helper.isNetworkAvailable
 import com.trackthebird.displayalbum.adapter.AlbumDisplayRecyclerViewAdapter
 import com.trackthebird.displayalbum.databinding.AlbumFragmentBinding
 import com.trackthebird.displayalbum.viewmodel.AlbumViewModel
