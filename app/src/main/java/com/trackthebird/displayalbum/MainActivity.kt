@@ -10,8 +10,11 @@ import androidx.navigation.NavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.trackthebird.displayalbum.databinding.ActivityMainBinding
+import com.trackthebird.displayalbum.network.ApiInterface
 
 class MainActivity : AppCompatActivity() {
+
+    private val TAG : String = "MainActivity"
 
     private lateinit var mBinding: ActivityMainBinding
     private lateinit var appBarConfiguration : AppBarConfiguration

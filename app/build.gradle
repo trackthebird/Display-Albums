@@ -5,7 +5,7 @@ plugins {
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.trackthebird.displayalbum"
@@ -30,7 +30,7 @@ android {
 
     buildFeatures {
         dataBinding true
-        viewBinding true
+//        viewBinding true
     }
 
     productFlavors {
@@ -40,22 +40,21 @@ android {
         abortOnError false
     }
 
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
-    }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 
 dependencies {
     def nav_version = "2.3.5"
     def lifecycle_version = "2.3.1"
+    def retrofit_version = "2.9.0"
 
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -83,4 +82,8 @@ dependencies {
     // Live data and View Model integration
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+
+    // Retrofit for Network service - 3rd Party service
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 }

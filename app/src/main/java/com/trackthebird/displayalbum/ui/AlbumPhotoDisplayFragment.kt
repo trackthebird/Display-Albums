@@ -9,6 +9,7 @@ import com.trackthebird.displayalbum.R
 
 class AlbumPhotoDisplayFragment : Fragment() {
 
+    private val TAG : String = "AlbumPhotoDisplayFragment"
 
     override fun onCreateView(
         inflater: LayoutInflater,
