@@ -13,7 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="18dp"
+        android:padding="18dp"
+        android:background="@color/white"
         tools:context="com.trackthebird.displayalbum.ui.AlbumFragment">
 
         <TextView
@@ -27,7 +28,6 @@
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
             android:textColor="@color/black"
-            android:background="@color/white"
             android:text="@string/title_album_info"
             app:layout_constrainedWidth="true"
             app:layout_constraintTop_toTopOf="parent"

@@ -10,7 +10,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.trackthebird.displayalbum.R
+import com.trackthebird.displayalbum.adapter.UserDisplayRecyclerViewAdapter
 import com.trackthebird.displayalbum.databinding.UserFragmentBinding
 import com.trackthebird.displayalbum.viewmodel.UserViewModel
 
@@ -20,6 +24,23 @@ class UserFragment : Fragment() {
 
     private lateinit var mBinding: UserFragmentBinding
     private lateinit var mViewModel: UserViewModel
+    private lateinit var mUserDisplayRecyclerViewAdapter: UserDisplayRecyclerViewAdapter
+
+    /**
+     * Function initialises variables and functions
+     */
+    private fun initialise() {
+        mUserDisplayRecyclerViewAdapter = UserDisplayRecyclerViewAdapter(requireActivity())
+        with(mBinding) {
+            mUserDisplayRecyclerViewAdapter = UserDisplayRecyclerViewAdapter(requireActivity())
+            with(idRecyclerViewUserInfo){
+                apply {
+                    layoutManager = LinearLayoutManager(requireActivity())
+                    adapter = mUserDisplayRecyclerViewAdapter
+                }
+            }
+        }
+    }
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -28,6 +49,11 @@ class UserFragment : Fragment() {
             R.layout.user_fragment,
             container,
         false )
+        mBinding.apply {
+          viewmodel = mViewModel
+          lifecycleOwner = this@UserFragment
+        }
+        initialise()
         setupLiveData()
         return mBinding.root
     }
@@ -43,11 +69,14 @@ class UserFragment : Fragment() {
     private fun setupLiveData() {
         with(mViewModel) {
             getAllUsers().observe(viewLifecycleOwner, Observer { data ->
-                if( data.isNullOrEmpty()){
+                if(!data.isNullOrEmpty()){
                     Log.d(TAG, "Data received...Display data ${data}")
+                    mUserDisplayRecyclerViewAdapter.apply {
+                        updateUserList(data)
+                        notifyDataSetChanged()
+                    }
                 }
             })
         }
     }
-
 }
