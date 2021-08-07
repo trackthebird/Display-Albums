@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:lines="1"
-            android:minHeight="36dp"
+            android:minHeight="20dp"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
             android:text="@string/photos_id_text"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:lines="1"
-            android:minHeight="36dp"
+            android:minHeight="20dp"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
             android:text="@string/album_id_text"
@@ -74,6 +74,5 @@
             app:layout_constraintTop_toBottomOf="@+id/id_imageview_album_image" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>
 

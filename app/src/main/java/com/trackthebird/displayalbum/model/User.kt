@@ -1,6 +1,6 @@
 package com.trackthebird.displayalbum.model
 
-data class User (
+data class User(
     val id: Int,
     val name: String,
     val username: String,
@@ -11,7 +11,7 @@ data class User (
     val company: Company,
 )
 
-data class Address (
+data class Address(
     val city: String,
     val geo: Geo,
     val street: String,
@@ -19,13 +19,13 @@ data class Address (
     val zipcode: String
 )
 
-data class Company (
+data class Company(
     val bs: String,
     val catchPhrase: String,
     val name: String
 )
 
-data class Geo (
+data class Geo(
     val lat: String,
     val lng: String
 )

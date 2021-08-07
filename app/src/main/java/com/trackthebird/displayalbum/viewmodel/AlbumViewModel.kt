@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.trackthebird.displayalbum.model.Album
-import com.trackthebird.displayalbum.model.User
 import com.trackthebird.displayalbum.network.ApiInterface
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,21 +14,19 @@ class AlbumViewModel : ViewModel() {
     /**
      * Initialize allalbums variable by lazy.
      */
-    private val albumId : MutableLiveData<Int> by lazy {
-        MutableLiveData<Int>()
-    }
-
-    private val allAlbums : MutableLiveData<List<Album>> by lazy {
-        MutableLiveData<List<Album>>().also {
-            loadAlbums(albumId.value ?: 0)
-        }
-    }
+    private var mAlbumId = -1
+    private lateinit var allAlbums: MutableLiveData<List<Album>>
 
     /**
      * Function returns list of all albums from View Model
      */
-    fun getAllAlbums(id: Int) : LiveData<List<Album>> {
-        albumId.value = id
+    fun getAllAlbums(albumId: Int): LiveData<List<Album>> {
+        if(mAlbumId == albumId) {
+            return allAlbums
+        }
+        allAlbums = MutableLiveData<List<Album>>()
+        loadAlbums(albumId)
+        mAlbumId = albumId
         return allAlbums
     }
 
@@ -37,10 +34,10 @@ class AlbumViewModel : ViewModel() {
      * Asynchronously downloads Album's list from specified URL
      */
     fun loadAlbums(albumId: Int) {
-        val networkService : ApiInterface = ApiInterface.create()
+        val networkService: ApiInterface = ApiInterface.create()
         val call: Call<List<Album>> = networkService.getAlbumList(albumId)
-        with(call){
-            enqueue(object: Callback<List<Album>> {
+        with(call) {
+            enqueue(object : Callback<List<Album>> {
                 override fun onResponse(call: Call<List<Album>>, response: Response<List<Album>>) {
                     allAlbums.postValue(response.body())
                 }
@@ -51,6 +48,4 @@ class AlbumViewModel : ViewModel() {
             })
         }
     }
-// https://jsonplaceholder.typicode.com/photos/albumId=3 - NW
-// https://jsonplaceholder.typicode.com/photos?albumId=3
 }

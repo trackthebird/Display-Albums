@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,15 +16,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.trackthebird.displayalbum.R
 import com.trackthebird.displayalbum.`interface`.OnItemClickListener
-import com.trackthebird.displayalbum.utils.Helper.isNetworkAvailable
 import com.trackthebird.displayalbum.adapter.AlbumDisplayRecyclerViewAdapter
 import com.trackthebird.displayalbum.databinding.AlbumFragmentBinding
+import com.trackthebird.displayalbum.utils.Helper.isNetworkAvailable
 import com.trackthebird.displayalbum.viewmodel.AlbumViewModel
 
 class AlbumFragment : Fragment(), OnItemClickListener {
 
-    private val TAG : String = "AlbumFragment"
-
+    private val TAG: String = "AlbumFragment"
     private lateinit var mBinding: AlbumFragmentBinding
     private lateinit var mViewModel: AlbumViewModel
     private lateinit var mAlbumDisplayRecyclerViewAdapter: AlbumDisplayRecyclerViewAdapter
@@ -37,7 +35,7 @@ class AlbumFragment : Fragment(), OnItemClickListener {
     private fun initialise() {
         mAlbumDisplayRecyclerViewAdapter = AlbumDisplayRecyclerViewAdapter(requireActivity(), this)
         with(mBinding) {
-            with(idRecyclerViewAlbumInfo){
+            with(idRecyclerViewAlbumInfo) {
                 apply {
                     layoutManager = LinearLayoutManager(requireActivity())
                     adapter = mAlbumDisplayRecyclerViewAdapter
@@ -54,13 +52,18 @@ class AlbumFragment : Fragment(), OnItemClickListener {
         }
     }
 
-    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         mBinding = DataBindingUtil.inflate(
             inflater,
             R.layout.album_fragment,
             container,
-            false )
+            false
+        )
         mBinding.apply {
             viewmodel = mViewModel
             lifecycleOwner = this@AlbumFragment
@@ -84,7 +87,7 @@ class AlbumFragment : Fragment(), OnItemClickListener {
             mBinding.idProgressbar.visibility = View.VISIBLE
             with(mViewModel) {
                 getAllAlbums(mAlbumId).observe(viewLifecycleOwner, Observer { data ->
-                    if(!data.isNullOrEmpty()){
+                    if (!data.isNullOrEmpty()) {
                         mAlbumDisplayRecyclerViewAdapter.apply {
                             updateAlbumList(data)
                             notifyDataSetChanged()
@@ -93,14 +96,18 @@ class AlbumFragment : Fragment(), OnItemClickListener {
                     // Stop Progress bar
                     Handler(Looper.getMainLooper()).postDelayed({
                         mBinding.idProgressbar.visibility = View.GONE
-                    }, 1000)
+                    }, 500)
                 })
             }
-        }
-        else{
-            Toast.makeText(requireActivity(), resources.getString(R.string.no_internet_connection), Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(
+                requireActivity(),
+                resources.getString(R.string.no_internet_connection),
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
+
     override fun onClick(id: Int) {
     }
 

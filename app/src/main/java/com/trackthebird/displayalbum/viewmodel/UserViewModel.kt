@@ -23,7 +23,7 @@ class UserViewModel : ViewModel() {
     /**
      * Function returns list of all users from View Model
      */
-    fun getAllUsers() : LiveData<List<User>> {
+    fun getAllUsers(): LiveData<List<User>> {
         return allUsers
     }
 
@@ -31,10 +31,10 @@ class UserViewModel : ViewModel() {
      * Asynchronously downloads user's list from specified URL
      */
     fun loadAllUsers() {
-        val networkService : ApiInterface = ApiInterface.create()
+        val networkService: ApiInterface = ApiInterface.create()
         val call: Call<List<User>> = networkService.getAllUsersList()
-        with(call){
-            enqueue(object: Callback<List<User>>{
+        with(call) {
+            enqueue(object : Callback<List<User>> {
                 override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                     allUsers.postValue(response.body())
                 }

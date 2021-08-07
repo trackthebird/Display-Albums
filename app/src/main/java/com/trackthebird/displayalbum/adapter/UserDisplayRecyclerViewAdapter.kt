@@ -6,14 +6,15 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.trackthebird.displayalbum.R
-import com.trackthebird.displayalbum.utils.Helper.getFormattedString
 import com.trackthebird.displayalbum.`interface`.OnItemClickListener
 import com.trackthebird.displayalbum.databinding.UserInfoItemBinding
 import com.trackthebird.displayalbum.model.User
+import com.trackthebird.displayalbum.utils.Helper.getFormattedString
 
 class UserDisplayRecyclerViewAdapter(
     val mContext: Context,
-    val onItemClick: OnItemClickListener ) :
+    val onItemClick: OnItemClickListener
+) :
     RecyclerView.Adapter<UserDisplayRecyclerViewAdapter.ViewHolder>() {
 
     private val TAG by lazy {
@@ -43,7 +44,8 @@ class UserDisplayRecyclerViewAdapter(
             with(mUsersList[position]) {
                 with(mContext) {
                     with(resources) {
-                        idTextviewCellTitle.text = getString(R.string.id).getFormattedString("${id}")
+                        idTextviewCellTitle.text =
+                            getString(R.string.id).getFormattedString("${id}")
                         idTextviewName.text = getString(R.string.name).getFormattedString(name)
                         idTextviewEmail.text = getString(R.string.email).getFormattedString(email)
                         idTextviewPhone.text = getString(R.string.phone).getFormattedString(phone)

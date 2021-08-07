@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
@@ -10,26 +9,24 @@
         android:id="@+id/user_info_fragment"
         android:name="com.trackthebird.displayalbum.ui.UserFragment"
         android:label="@string/user_info"
-        tools:layout="@layout/user_fragment" >
+        tools:layout="@layout/user_fragment">
         <action
             android:id="@+id/next_action"
-            app:argType="integer"
             android:defaultValue="0"
-            app:destination="@+id/album_info_fragment">
-        </action>
+            app:argType="integer"
+            app:destination="@+id/album_info_fragment"></action>
     </fragment>
 
     <fragment
         android:id="@+id/album_info_fragment"
         android:name="com.trackthebird.displayalbum.ui.AlbumFragment"
         android:label="@string/album_details"
-        tools:layout="@layout/album_fragment" >
+        tools:layout="@layout/album_fragment">
         <action
             android:id="@+id/next_action"
-            app:argType="integer"
             android:defaultValue="0"
-            app:destination="@+id/album_photo_display_fragment">
-        </action>
+            app:argType="integer"
+            app:destination="@+id/album_photo_display_fragment"></action>
     </fragment>
 
     <fragment

@@ -10,7 +10,7 @@ object Helper {
     /**
      * Function Checks Internet connectivity
      */
-    fun Context.isNetworkAvailable() : Boolean  {
+    fun Context.isNetworkAvailable(): Boolean {
         val connection = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             connection.getNetworkCapabilities(connection.activeNetwork)?.run {
@@ -21,10 +21,9 @@ object Helper {
                     else -> false
                 }
             }
-        }
-        else {
+        } else {
             connection.activeNetworkInfo?.run {
-                when(type) {
+                when (type) {
                     ConnectivityManager.TYPE_WIFI, ConnectivityManager.TYPE_MOBILE -> return true
                     else -> return false
                 }
@@ -36,8 +35,7 @@ object Helper {
     /**
      * Returns formatted String using Extension function
      */
-    fun String.getFormattedString( value:String) : String {
+    fun String.getFormattedString(value: String): String {
         return format(value)
     }
-
 }

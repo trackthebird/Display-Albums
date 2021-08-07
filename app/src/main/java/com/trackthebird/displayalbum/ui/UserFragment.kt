@@ -13,20 +13,19 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.trackthebird.displayalbum.R
-import com.trackthebird.displayalbum.utils.Helper.isNetworkAvailable
 import com.trackthebird.displayalbum.`interface`.OnItemClickListener
 import com.trackthebird.displayalbum.adapter.UserDisplayRecyclerViewAdapter
 import com.trackthebird.displayalbum.databinding.UserFragmentBinding
+import com.trackthebird.displayalbum.utils.Helper.isNetworkAvailable
 import com.trackthebird.displayalbum.viewmodel.UserViewModel
-import androidx.navigation.fragment.findNavController
 import java.util.*
 
 class UserFragment : Fragment(), OnItemClickListener {
 
-    private val TAG : String = "UserFragment"
-
+    private val TAG: String = "UserFragment"
     private lateinit var mBinding: UserFragmentBinding
     private lateinit var mViewModel: UserViewModel
     private lateinit var mUserDisplayRecyclerViewAdapter: UserDisplayRecyclerViewAdapter
@@ -37,7 +36,7 @@ class UserFragment : Fragment(), OnItemClickListener {
     private fun initialise() {
         mUserDisplayRecyclerViewAdapter = UserDisplayRecyclerViewAdapter(requireActivity(), this)
         with(mBinding) {
-            with(idRecyclerViewUserInfo){
+            with(idRecyclerViewUserInfo) {
                 apply {
                     layoutManager = LinearLayoutManager(requireActivity())
                     adapter = mUserDisplayRecyclerViewAdapter
@@ -46,16 +45,21 @@ class UserFragment : Fragment(), OnItemClickListener {
         }
     }
 
-    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         mBinding = DataBindingUtil.inflate(
             inflater,
             R.layout.user_fragment,
             container,
-        false )
+            false
+        )
         mBinding.apply {
-          viewmodel = mViewModel
-          lifecycleOwner = this@UserFragment
+            viewmodel = mViewModel
+            lifecycleOwner = this@UserFragment
         }
         initialise()
         setupLiveData()
@@ -75,7 +79,7 @@ class UserFragment : Fragment(), OnItemClickListener {
             mBinding.idProgressbar.visibility = View.VISIBLE
             with(mViewModel) {
                 getAllUsers().observe(viewLifecycleOwner, Observer { data ->
-                    if(!data.isNullOrEmpty()){
+                    if (!data.isNullOrEmpty()) {
                         mUserDisplayRecyclerViewAdapter.apply {
                             updateUserList(data)
                             notifyDataSetChanged()
@@ -84,14 +88,16 @@ class UserFragment : Fragment(), OnItemClickListener {
                     // Stop Progress bar
                     Handler(Looper.getMainLooper()).postDelayed({
                         mBinding.idProgressbar.visibility = View.GONE
-                    }, 1000)
+                    }, 500)
                 })
             }
+        } else {
+            Toast.makeText(
+                requireActivity(),
+                resources.getString(R.string.no_internet_connection),
+                Toast.LENGTH_LONG
+            ).show()
         }
-        else{
-            Toast.makeText(requireActivity(), resources.getString(R.string.no_internet_connection), Toast.LENGTH_LONG).show()
-        }
-
     }
 
     override fun onClick(id: Int) {

@@ -13,13 +13,14 @@ import com.trackthebird.displayalbum.model.Album
 
 class AlbumDisplayRecyclerViewAdapter(
     val mContext: Context,
-    val onItemClick: OnItemClickListener ) :
-    RecyclerView.Adapter<AlbumDisplayRecyclerViewAdapter.ViewHolder>(){
+    val onItemClick: OnItemClickListener
+) : RecyclerView.Adapter<AlbumDisplayRecyclerViewAdapter.ViewHolder>() {
 
     private val TAG by lazy {
         "AlbumDisplayRecyclerViewAdapter"
     }
     private var mAlbumsList: List<Album> = arrayListOf()
+
     /**
      * Function updated RecyclerView List
      */
@@ -27,19 +28,19 @@ class AlbumDisplayRecyclerViewAdapter(
         this.mAlbumsList = albumList
     }
 
-    override fun onCreateViewHolder( parent: ViewGroup, viewType: Int ): ViewHolder {
-       val viewBinding: AlbumInfoItemBinding = DataBindingUtil.inflate(
-           LayoutInflater.from(parent.context),
-           R.layout.album_info_item,
-           parent,
-           false
-       )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val viewBinding: AlbumInfoItemBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.album_info_item,
+            parent,
+            false
+        )
         return ViewHolder(viewBinding)
     }
 
-    override fun onBindViewHolder( holder: ViewHolder,  position: Int ) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder.bind()) {
-            with(mAlbumsList[position]){
+            with(mAlbumsList[position]) {
                 with(mContext) {
                     with(resources) {
                         idTextviewAlbumText.text = title
@@ -53,17 +54,17 @@ class AlbumDisplayRecyclerViewAdapter(
                     }
                 }
                 idTextviewAlbumText.setOnClickListener {
-                    onItemClick.onClick(albumId, id, url, title )
+                    onItemClick.onClick(albumId, id, url, title)
                 }
                 idCardview.setOnClickListener {
-                    onItemClick.onClick(albumId, id, url, title )
+                    onItemClick.onClick(albumId, id, url, title)
                 }
             }
         }
     }
 
     override fun getItemCount(): Int {
-        if(!mAlbumsList.isNullOrEmpty()) {
+        if (!mAlbumsList.isNullOrEmpty()) {
             return mAlbumsList.size
         }
         return 0
@@ -72,11 +73,10 @@ class AlbumDisplayRecyclerViewAdapter(
     /**
      * View Holder class
      */
-    class ViewHolder(val viewBinding: AlbumInfoItemBinding) : RecyclerView.ViewHolder(viewBinding.root) {
-        fun bind() : AlbumInfoItemBinding {
+    class ViewHolder(val viewBinding: AlbumInfoItemBinding) :
+        RecyclerView.ViewHolder(viewBinding.root) {
+        fun bind(): AlbumInfoItemBinding {
             return viewBinding
         }
     }
-
-
 }

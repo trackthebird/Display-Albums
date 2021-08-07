@@ -12,22 +12,17 @@ import retrofit2.http.Query
 interface ApiInterface {
 
     @GET("users")
-    fun getAllUsersList() : Call<List<User>>
-    // For  https://jsonplaceholder.typicode.com/users
+    fun getAllUsersList(): Call<List<User>>
 
     @GET("photos")
-    fun getAlbumList(@Query("albumId") albumId: Int) : Call<List<Album>>
-
-//    @GET("photos?albumId={albumId}")
-//    fun getAlbumList(@Query("albumId") albumId: Int) : Call<List<Album>>
-    // For https://jsonplaceholder.typicode.com/photos?albumId=3
+    fun getAlbumList(@Query("albumId") albumId: Int): Call<List<Album>>
 
     companion object {
 
         val BASE_URL = "https://jsonplaceholder.typicode.com/"
 
         // Creates Retrofit instance.
-        fun create() : ApiInterface {
+        fun create(): ApiInterface {
             val retrofit = Retrofit.Builder()
                 .run {
                     baseUrl(BASE_URL)
