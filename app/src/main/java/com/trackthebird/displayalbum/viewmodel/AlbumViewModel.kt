@@ -15,7 +15,7 @@ class AlbumViewModel : ViewModel() {
      * Initialize allalbums variable by lazy.
      */
     private var mAlbumId = -1
-    private lateinit var allAlbums: MutableLiveData<List<Album>>
+    lateinit var allAlbums: MutableLiveData<List<Album>>
 
     /**
      * Function returns list of all albums from View Model

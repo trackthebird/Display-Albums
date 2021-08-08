@@ -51,7 +51,7 @@ class UserDisplayRecyclerViewAdapter(
                         idTextviewPhone.text = getString(R.string.phone).getFormattedString(phone)
                     }
                 }
-                idCardview.setOnClickListener { view ->
+                idCardview.setOnClickListener {
                     onItemClick.onClick(id)
                 }
             }
